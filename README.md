@@ -1,1 +1,1 @@
-# GetSendEmails
+# GetSentEmails

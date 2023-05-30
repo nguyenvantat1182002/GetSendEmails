@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QMainWindow, QSpinBox, QPlainTextEdit
 from PyQt5.QtCore import QThread, QThreadPool, QRunnable, pyqtSignal
 from queue import Queue
 
-import os
 import threading
 import time
 import imaplib
@@ -16,17 +15,8 @@ class MainWindow(QMainWindow):
 
         uic.loadUi('ui/MainWindow.ui', self)
 
-        self.pushButton_3.clicked.connect(self.handle_output)
         self.pushButton.clicked.connect(self.handle_get)
         self.pushButton_2.clicked.connect(self.handle_stop)
-
-    def handle_output(self) -> None:
-        folder_path = 'output'
-
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
-
-        os.startfile(folder_path)
 
     def task_finished(self) -> None:
         self.pushButton.setEnabled(True)

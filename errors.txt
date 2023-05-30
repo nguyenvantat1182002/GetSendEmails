@@ -1,0 +1,1 @@
+b'[AUTHENTICATIONFAILED] Authentication failed.'

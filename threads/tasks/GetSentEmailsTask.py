@@ -61,14 +61,13 @@ class GetSentEmailsTask(IGetSendEmailsTask):
                     email_address = email.utils.getaddresses([to_header])[0][-1]
                     
                     with QMutexLocker(self.parent.mutex):
+                        self.parent.updateSentEmail.emit(f'{email_address}\n')
+                        
                         self.parent.saveEmail(
                             fileName='Email_Success.txt',
                             email=email_address,
                             state=1
                         )
-
-                        self.parent.updateSentEmail.emit(f'{email_address}\n')
-
 
                 self.parent.tableWidget.update_status(row, 'done!')
                 
